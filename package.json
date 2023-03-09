@@ -1,0 +1,29 @@
+{
+  "name": "react-training-vm",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "state",
+    "state-homework",
+    "props",
+    "props-homework",
+    "hooks",
+    "hooks-homework",
+    "fetching",
+    "fetching-homework"
+  ],
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "5.52.0",
+    "@typescript-eslint/parser": "5.52.0",
+    "eslint": "8.34.0",
+    "eslint-plugin-import": "2.27.5",
+    "eslint-plugin-react": "7.32.2",
+    "eslint-plugin-react-hooks": "4.6.0",
+    "eslint-plugin-simple-import-sort": "10.0.0",
+    "eslint-plugin-unicorn": "45.0.2",
+    "eslint-plugin-unused-imports": "2.0.0"
+  },
+  "scripts": {
+    "fix" : "eslint --fix **/src/**/*"
+  }
+}
