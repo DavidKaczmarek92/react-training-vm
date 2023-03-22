@@ -10,7 +10,8 @@
     "hooks",
     "hooks-homework",
     "fetching",
-    "fetching-homework"
+    "fetching-homework",
+    "common"
   ],
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "5.52.0",
