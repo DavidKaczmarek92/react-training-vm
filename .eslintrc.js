@@ -98,7 +98,7 @@ module.exports = {
         }],
         "no-restricted-exports": ["error", { "restrictedNamedExports": ["default"] }],
         "no-return-assign": "error",
-        "no-shadow": "error",
+        "no-shadow": "off",
         "no-throw-literal": "error",
         "no-undef-init": "error",
         "no-underscore-dangle": "error",
