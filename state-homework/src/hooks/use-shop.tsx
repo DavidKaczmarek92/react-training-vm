@@ -207,39 +207,25 @@ const shopReducer = (currentState: ShopState, action:
 export function useShop() {
     const [state, dispatch] = useReducer(shopReducer, initialState);
 
-    const doAddToCart = useCallback(
-        (id: string) => dispatch({
-            type: ShopActionType.ADD_TO_CART,
-            payload: { id },
-        })
-        ,
-        [dispatch],
-    );
-    const doRemoveFromCart = useCallback(
-        (id: string) => dispatch({
-            type: ShopActionType.REMOVE_FROM_CART,
-            payload: { id },
-        }),
-        [dispatch],
-    );
-    const doPurchase = useCallback(
-        () => dispatch({ type: ShopActionType.PURCHASE }),
-        [dispatch]);
-    const doAddNewProduct = useCallback(
-        (product: ProductInTheCatalogue) => dispatch({
-            type: ShopActionType.ADD_NEW_PRODUCT,
-            payload: { product },
-        }),
-        [dispatch]);
-
     return {
         state,
         products: selectAllProducts(state),
         productsInTheCart: selectAllProductsInTheCart(state),
         total: selectCartTotal(state),
-        doAddToCart,
-        doRemoveFromCart,
-        doPurchase,
-        doAddNewProduct,
+        doAddToCart: (id: string) => dispatch({
+            type: ShopActionType.ADD_TO_CART,
+            payload: { id },
+        }),
+        doRemoveFromCart: (id: string) => dispatch({
+            type: ShopActionType.REMOVE_FROM_CART,
+            payload: { id },
+        }),
+        doPurchase: useCallback(
+            () => dispatch({ type: ShopActionType.PURCHASE }),
+            [dispatch]),
+        doAddNewProduct: (product: ProductInTheCatalogue) => dispatch({
+            type: ShopActionType.ADD_NEW_PRODUCT,
+            payload: { product },
+        }),
     };
 }
