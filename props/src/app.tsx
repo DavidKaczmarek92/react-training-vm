@@ -1,34 +1,42 @@
 import "./app.pcss";
 
-import { useState } from "react";
+import { RouteConfig, Router } from "common/src/components/router/router";
+import React from "react";
 
-import reactLogo from "./assets/react.svg";
+import { BasicProps } from "../routes/1-basic-props/basic-props";
+import { PropsTyping } from "../routes/2-props-typing/props-typing";
+import { PropDrilling } from "../routes/3-prop-drilling/prop-drilling";
+import { GivingProps } from "../routes/4-giving-props-to-children/giving-props";
+import { UsingProps } from "../routes/5-using-props/using-props";
+import { UseContextComponent } from "../routes/6-use-context/use-context-component";
+
+const routes: RouteConfig[] = [
+    {
+        path: "/1",
+        component: () => <BasicProps/>,
+    }, {
+        path: "/2",
+        component: () => <PropsTyping/>,
+    }, {
+        path: "/3",
+        component: () => <PropDrilling/>,
+    }, {
+        path: "/4",
+        component: () => <GivingProps/>,
+    }, {
+        path: "/5",
+        component: () => <UsingProps/>,
+    }, {
+        path: "/6",
+        component: () => <UseContextComponent/>,
+    },
+];
 
 function App() {
-    const [count, setCount] = useState(0);
 
     return (
         <div className="App">
-            <div>
-                <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-                    <img src="/vite.svg" className="logo" alt="Vite logo" />
-                </a>
-                <a href="https://reactjs.org" target="_blank" rel="noreferrer">
-                    <img src={reactLogo} className="logo react" alt="React logo" />
-                </a>
-            </div>
-            <h1>Vite + React</h1>
-            <div className="card">
-                <button type="button" onClick={() => setCount((current) => current+ 1)}>
-          count is {count}
-                </button>
-                <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-                </p>
-            </div>
-            <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-            </p>
+            <Router routes={routes}/>
         </div>
     );
 }
