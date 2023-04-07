@@ -1,4 +1,3 @@
-/* eslint-disable no-magic-numbers */
 import { useState } from "react";
 
 type ToDo = {

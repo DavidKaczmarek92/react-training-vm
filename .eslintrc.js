@@ -86,7 +86,6 @@ module.exports = {
         "no-invalid-this": "error",
         "no-label-var": "error",
         "no-lone-blocks": "error",
-        "no-magic-numbers": ["error", { "ignore": [0, 1, 2, -1, -2] }],
         "no-negated-condition": "error",
         "no-nested-ternary": "error",
         "no-new-object": "error",
