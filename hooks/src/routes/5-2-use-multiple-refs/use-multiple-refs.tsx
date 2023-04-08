@@ -1,27 +1,24 @@
 import React, { ForwardedRef, forwardRef, MutableRefObject, useImperativeHandle, useRef } from "react";
 
-type ForwardedDoubleRef<T> = {
-    firstRef: MutableRefObject<T>
-    secondRef: MutableRefObject<T>
-}
+type ForwardedMultipleRefs<T> = MutableRefObject<T>[]
 
 export const UseMultipleRefs = () => {
-    const inputRef = useRef<ForwardedDoubleRef<ForwardedDoubleRef<HTMLInputElement | null> | null>>(null);
+    const inputRef = useRef<ForwardedMultipleRefs<HTMLInputElement | null>>(null);
 
     const onButtonClick1 = () => {
-        inputRef?.current?.firstRef.current?.firstRef.current?.focus();
+        inputRef?.current?.[0]?.current?.focus();
     };
 
     const onButtonClick2 = () => {
-        inputRef?.current?.firstRef.current?.secondRef.current?.focus();
+        inputRef?.current?.[1]?.current?.focus();
     };
 
     const onButtonClick3 = () => {
-        inputRef?.current?.secondRef.current?.firstRef.current?.focus();
+        inputRef?.current?.[2]?.current?.focus();
     };
 
     const onButtonClick4 = () => {
-        inputRef?.current?.secondRef.current?.secondRef.current?.focus();
+        inputRef?.current?.[3]?.current?.focus();
     };
 
     return (
@@ -41,14 +38,11 @@ export const UseMultipleRefs = () => {
 };
 
 // eslint-disable-next-line react/display-name
-const InputWrapper = forwardRef((_, ref:ForwardedRef<ForwardedDoubleRef<ForwardedDoubleRef<HTMLInputElement | null> | null>>) => {
-    const firstRef = useRef<ForwardedDoubleRef<HTMLInputElement | null>>(null);
-    const secondRef = useRef<ForwardedDoubleRef<HTMLInputElement | null>>(null);
+const InputWrapper = forwardRef((_, ref:ForwardedRef<ForwardedMultipleRefs<HTMLInputElement | null>>) => {
+    const firstRef = useRef<ForwardedMultipleRefs<HTMLInputElement | null>>(null);
+    const secondRef = useRef<ForwardedMultipleRefs<HTMLInputElement | null>>(null);
 
-    useImperativeHandle(ref, () => ({
-        firstRef,
-        secondRef,
-    }));
+    useImperativeHandle(ref, () => ([...firstRef?.current ?? [], ...secondRef?.current ?? []]));
 
     return (
         <div>
@@ -63,14 +57,14 @@ const InputWrapper = forwardRef((_, ref:ForwardedRef<ForwardedDoubleRef<Forwarde
 });
 
 // eslint-disable-next-line react/display-name
-const CustomInput = forwardRef((_, forwardedRef:ForwardedRef<ForwardedDoubleRef<HTMLInputElement | null>>) => {
+const CustomInput = forwardRef((_, forwardedRef:ForwardedRef<ForwardedMultipleRefs<HTMLInputElement | null>>) => {
     const firstRef = useRef<HTMLInputElement | null>(null);
     const secondRef = useRef<HTMLInputElement | null>(null);
 
-    useImperativeHandle(forwardedRef, () => ({
+    useImperativeHandle(forwardedRef, () => [
         firstRef,
         secondRef,
-    }));
+    ]);
 
     return(
         <div>
