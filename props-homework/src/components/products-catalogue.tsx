@@ -1,7 +1,7 @@
 import { ProductInTheCatalogueEntity } from "../entites/product-entity";
 import { Product } from "./product";
 
-type ProductsCatalogueProps = {
+export type ProductsCatalogueProps = {
     products: ProductInTheCatalogueEntity[],
     doAddToCart: (id: string) => void
 }
