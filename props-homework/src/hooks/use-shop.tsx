@@ -206,7 +206,6 @@ export function useShop() {
     const [state, dispatch] = useReducer(shopReducer, initialState);
 
     return {
-        state,
         products: selectAllProducts(state),
         productsInTheCart: selectAllProductsInTheCart(state),
         total: selectCartTotal(state),
