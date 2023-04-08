@@ -8,7 +8,7 @@ type FormType = {
     price: string
 }
 
-type FromProps = {
+type AddNewProductFormProps = {
     onSubmit: (data: ProductInTheCatalogueEntity) => void
 }
 
@@ -18,7 +18,7 @@ const InitialState = {
     price: "",
 };
 
-export const AddNewProductForm = ({ onSubmit }: FromProps) => {
+export const AddNewProductForm = ({ onSubmit }: AddNewProductFormProps) => {
     const [inputs, setInputs] = useState<FormType>(InitialState);
 
     const handleSubmit = (e: FormEvent) => {
